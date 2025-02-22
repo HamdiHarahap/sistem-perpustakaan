@@ -1,5 +1,5 @@
 <x-layout>
-    <x-slot:title>Tambah Buku</x-slot:title>
+    <x-slot:title>Pinjam Buku</x-slot:title>
     <x-slot:page>{{$page}}</x-slot:page>
 
     <section class="ps-[18rem] flex flex-col gap-10 py-10">

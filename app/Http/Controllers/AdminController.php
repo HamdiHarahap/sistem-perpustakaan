@@ -12,7 +12,14 @@ class AdminController extends Controller
 {
     public function index()
     {
+        $hitungUser = User::count();
+        $hitungBuku = Book::count();
+        $hitungPinjam = Transaction::count();
+
         return view('admin.dashboard', [
+            'hitungUser' => $hitungUser,
+            'hitungBuku' => $hitungBuku,
+            'hitungPinjam' => $hitungPinjam,
             'page' => 'dashboard'
         ]); 
     }

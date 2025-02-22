@@ -7,13 +7,26 @@ use App\Models\Book;
 use App\Models\User;
 use App\Models\Transaction;
 use Illuminate\Support\Facades\Auth;
+use PHPUnit\Framework\Constraint\Count;
 
 class UserController extends Controller
 {
     public function index()
     {
+        $user = Auth::user();
+
+        $hitungPinjam = Transaction::where('user_id', $user->id)->count();
+        $dataTerakhir = Transaction::where('user_id', $user->id)
+            ->orderBy('tanggal_pinjam', 'desc')
+            ->first();
+
+
+
         return view('user.dashboard', [
             'page' => 'dashboard',
+            'hitungPinjam' => $hitungPinjam,
+            'terakhirPinjam' => $dataTerakhir->tanggal_pinjam,
+            'bukuTerakhir' => $dataTerakhir->book->judul_buku
         ]);
     }
 
