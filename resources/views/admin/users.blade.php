@@ -20,7 +20,6 @@
                     <th class="p-2">Email</th>
                     <th class="p-2">Password</th>
                     <th class="p-2">Status</th>
-                    <th class="p-2">Action</th>
                 </tr>
                 <?php $no = 1 ?>
                 @foreach ($data as $item) 
@@ -33,20 +32,6 @@
                             <p class="rounded-lg p-2 {{$item->status == 'tidak meminjam' ? 'bg-green-600' : 'bg-red-600'}} w-fit text-white">
                                 {{$item->status}}
                             </p>
-                        </td>
-                        <td class="p-2">
-                            <div class="flex gap-1">
-                                <a href="/admin/manage/edit/{{$item->id}}" class="flex items-center justify-center bg-yellow-300 rounded-lg cursor-pointer p-1 w-fit">
-                                    <img src="../assets/icons/edit.svg" alt="logo" class="w-6">
-                                </a>
-                                <form action="" method="POST">
-                                    @csrf
-                                    @method('delete')
-                                    <button type="submit" onclick="return confirm('Anda yakin?')" class="flex items-center justify-center bg-red-600 rounded-lg cursor-pointer p-1 w-fit">
-                                        <img src="../assets/icons/trash.svg" alt="logo" class="w-6">
-                                    </button>
-                                </form>
-                            </div>
                         </td>
                     </tr>
                 @endforeach

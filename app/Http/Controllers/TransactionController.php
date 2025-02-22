@@ -29,7 +29,8 @@ class TransactionController extends Controller
             'user_id' => $user->id,
             'book_id' => $book->id,
             'tanggal_pinjam' => $request->input('pinjam'),
-            'tanggal_kembali' => Carbon::parse($request->input('pinjam'))->addDays(7),
+            'tanggal_wajib_kembali' => Carbon::parse($request->input('pinjam'))->addDays(7),
+            'tanggal_kembali' => null
         ]);
 
         $user->update(['status' => 'meminjam']);
@@ -45,6 +46,7 @@ class TransactionController extends Controller
 
         if ($transaction->status === 'meminjam') {
             $transaction->update(['status' => 'kembali']);
+            $transaction->update(['tanggal_kembali' => now()->format('Y-m-d')]);
 
             $book = Book::find($transaction->book_id);
             if ($book) {
@@ -80,8 +82,6 @@ class TransactionController extends Controller
                 }
             }
         }
-
-
     }
 
 

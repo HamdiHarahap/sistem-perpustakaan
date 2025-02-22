@@ -18,6 +18,7 @@
                     <th class="p-2">No</th>
                     <th class="p-2">Judul Buku</th>
                     <th class="p-2">Tanggal Pinjam</th>
+                    <th class="p-2">Tanggal Harus Kembali</th>
                     <th class="p-2">Tanggal Kembali</th>
                     <th class="p-2">Status</th>
                 </tr>
@@ -27,7 +28,14 @@
                         <td class="p-2">{{$no++}}</td>
                         <td class="p-2">{{$item->book->judul_buku}}</td>
                         <td class="p-2">{{$item->tanggal_pinjam}}</td>
-                        <td class="p-2">{{$item->tanggal_kembali}}</td>
+                        <td class="p-2">{{$item->tanggal_wajib_kembali}}</td>
+                        <td class="p-2">
+                            @if ($item->tanggal_kembali == null)
+                                <p>-</p>
+                            @else
+                                <p>{{$item->tanggal_kembali}}</p>
+                            @endif
+                        </td>
                         <td class="p-2">
                             <p class="rounded-lg p-2 w-fit
                                 {{ $item->status === 'meminjam' ? 'bg-orange-500 text-white' : 

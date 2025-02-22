@@ -16,7 +16,8 @@ return new class extends Migration
             $table->foreignId('user_id')->constrained('users');
             $table->foreignId('book_id')->constrained('books');
             $table->date('tanggal_pinjam');
-            $table->date('tanggal_kembali');
+            $table->date('tanggal_wajib_kembali');
+            $table->date('tanggal_kembali')->nullable()->default(null);
             $table->enum('status', ['meminjam', 'kembali', 'denda']);
             $table->timestamps();
         });

@@ -19,6 +19,7 @@
                     <th class="p-2">Nama Peminjaman</th>
                     <th class="p-2">Judul Buku</th>
                     <th class="p-2">Tanggal Pinjam</th>
+                    <th class="p-2">Tanggal Harus Kembali</th>
                     <th class="p-2">Tanggal Kembali</th>
                     <th class="p-2">Status</th>
                 </tr>
@@ -29,13 +30,20 @@
                         <td class="p-2">{{$item->user->name}}</td>
                         <td class="p-2">{{$item->book->judul_buku}}</td>
                         <td class="p-2">{{$item->tanggal_pinjam}}</td>
-                        <td class="p-2">{{$item->tanggal_kembali}}</td>
+                        <td class="p-2">{{$item->tanggal_wajib_kembali}}</td>
+                        <td class="p-2">
+                            @if ($item->tanggal_kembali == null)
+                                <p>-</p>
+                            @else
+                                <p>{{$item->tanggal_kembali}}</p>
+                            @endif
+                        </td>
                         <td class="p-2">
                             <p class="rounded-lg p-2 w-fit cursor-pointer status-toggle
                                 {{ $item->status === 'meminjam' ? 'bg-orange-500 text-white' : 
                                    ($item->status === 'kembali' ? 'bg-green-500 text-white' : 
                                    ($item->status === 'denda' ? 'bg-red-500 text-white' : '')) }}"
-                                data-id="{{ $item->id }}" onclick="window.location.reload()">
+                                data-id="{{ $item->id }}" onclick="if(confirm('Anda akan mengubah status ke kembali?')) window.location.reload();">
                                 {{ $item->status }}
                             </p>
                         </td>
