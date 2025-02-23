@@ -2,11 +2,12 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Book;
-use App\Models\Transaction;
-use App\Models\User;
 use Carbon\Carbon;
+use App\Models\Book;
+use App\Models\User;
+use App\Models\Transaction;
 use Illuminate\Http\Request;
+use RealRashid\SweetAlert\Facades\Alert;
 
 class TransactionController extends Controller
 {
@@ -37,6 +38,7 @@ class TransactionController extends Controller
 
         $book->update(['status' => 'dipinjam']);
 
+        Alert::success('Peminjaman Berhasil', 'Data peminjaman anda telah dicatat!');
         return redirect()->route('user.history');
     }
 

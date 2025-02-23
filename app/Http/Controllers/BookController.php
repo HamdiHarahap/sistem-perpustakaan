@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Book;
 use Illuminate\Http\Request;
+use RealRashid\SweetAlert\Facades\Alert;
 
 class BookController extends Controller
 {
@@ -23,6 +24,7 @@ class BookController extends Controller
             'tahun_terbit' => $request->input('tahun')
         ]);
 
+        Alert::success('Buku Baru', 'Data buku baru telah ditambahkan!');
         return redirect()->route('admin.books');
     }
 
