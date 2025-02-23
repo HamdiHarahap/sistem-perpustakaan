@@ -6,7 +6,8 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <meta name="csrf-token" content="{{ csrf_token() }}"> 
     <title>{{$title}}</title>
-    @vite(['resources/css/app.css', 'resources/js/app.js', 'resources/js/main.js', 'resources/js/status.js'])
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    @vite(['resources/css/app.css', 'resources/js/app.js', 'resources/js/main.js', 'resources/js/status.js', 'resources/js/delete.js'])
 </head>
 <body>
     @unless(request()->is('login') || request()->is('register'))
@@ -25,5 +26,7 @@
     <main class="bg-[#F2F9FE] min-h-screen">
         {{$slot}}
     </main>
+
+    @include('sweetalert::alert')
 </body>
 </html>

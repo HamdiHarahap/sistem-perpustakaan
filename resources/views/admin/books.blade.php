@@ -42,10 +42,10 @@
                                 <a href="/admin/edit/{{$item->id}}" class="flex items-center justify-center bg-yellow-300 rounded-lg cursor-pointer p-1 w-fit">
                                     <img src="../assets/icons/edit.svg" alt="logo" class="w-6">
                                 </a>
-                                <form action="{{route('book.delete', ['id' => $item->id])}}" method="POST">
+                                <form action="{{ route('book.delete', ['id' => $item->id]) }}" method="POST" class="delete-form">
                                     @csrf
                                     @method('delete')
-                                    <button type="submit" onclick="return confirm('Anda yakin?')" class="flex items-center justify-center bg-red-600 rounded-lg cursor-pointer p-1 w-fit">
+                                    <button type="button" class="delete-btn flex items-center justify-center bg-red-600 rounded-lg cursor-pointer p-1 w-fit">
                                         <img src="../assets/icons/trash.svg" alt="logo" class="w-6">
                                     </button>
                                 </form>
