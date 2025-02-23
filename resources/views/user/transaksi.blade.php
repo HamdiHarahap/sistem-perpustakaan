@@ -19,7 +19,7 @@
                         <ol class="list-inside list-decimal w-[35rem] flex flex-col gap-1">
                             <li>Batas waktu pengembalian adalah 7 hari setelah buku dipinjam</li>
                             <li>Denda akan dimulai setelah telat pengembalian hari pertama senilai 10.000 dan akan bertambah senilai 10.000 setelah 3 hari berikutnya</li>
-                            <li>Anggota hanya dapat meminjam 2 buku dalam satu waktu</li>
+                            <li>Anggota hanya dapat meminjam 1 buku dalam satu waktu</li>
                         </ol>
                     </div>
                 </div>

@@ -17,17 +17,15 @@ class UserController extends Controller
 
         $hitungPinjam = Transaction::where('user_id', $user->id)->count();
         $dataTerakhir = Transaction::where('user_id', $user->id)
-            ->orderBy('tanggal_pinjam', 'desc')
+            ->orderBy('id', 'asc')
             ->first();
 
-
-
-        return view('user.dashboard', [
-            'page' => 'dashboard',
-            'hitungPinjam' => $hitungPinjam,
-            'terakhirPinjam' => $dataTerakhir->tanggal_pinjam,
-            'bukuTerakhir' => $dataTerakhir->book->judul_buku
-        ]);
+            return view('user.dashboard', [
+                'page' => 'dashboard',
+                'hitungPinjam' => $hitungPinjam,
+                'terakhirPinjam' => $dataTerakhir ? $dataTerakhir->tanggal_pinjam : '-',
+                'bukuTerakhir' => $dataTerakhir && $dataTerakhir->book ? $dataTerakhir->book->judul_buku : '-'
+            ]);            
     }
 
     public function bookPage()
@@ -44,7 +42,7 @@ class UserController extends Controller
     {
         $user = Auth::user();
 
-        $books = Book::orderBy('id', 'asc')->get();
+        $books = Book::where('status', 'tersedia')->orderBy('id', 'asc')->get();
         
         return view('user.transaksi', [
             'data' => $books,

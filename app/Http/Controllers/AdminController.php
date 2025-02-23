@@ -12,7 +12,7 @@ class AdminController extends Controller
 {
     public function index()
     {
-        $hitungUser = User::count();
+        $hitungUser = User::where('role', 'user')->count();
         $hitungBuku = Book::count();
         $hitungPinjam = Transaction::count();
 
@@ -52,7 +52,7 @@ class AdminController extends Controller
             ->update(['status' => 'denda']);
 
         
-        $transaksi = Transaction::orderBy('id', 'asc')->get();
+        $transaksi = Transaction::orderBy('tanggal_pinjam', 'asc')->get();
 
         return view('admin.transaksi', [
             'data' => $transaksi,

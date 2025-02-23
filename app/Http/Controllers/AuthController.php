@@ -48,7 +48,7 @@ class AuthController extends Controller
         $user = User::where('email', $request->input('email'))->first();
 
         if(!$user || !Hash::check($request->input('password'), $user->password)) {
-            return redirect()->route('login');
+            return redirect()->route('login')->with('error', 'Email dan password tidak sesuai!');
         }
 
         Auth::login($user);
