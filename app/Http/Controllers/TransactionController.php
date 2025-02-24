@@ -44,7 +44,7 @@ class TransactionController extends Controller
 
     public function updateStatus($id)
     {
-        $transaction = Transaction::findOrFail($id);
+        $transaction = Transaction::where('id', $id)->first();
 
         if ($transaction->status === 'meminjam') {
             $transaction->update(['status' => 'kembali']);
@@ -65,6 +65,10 @@ class TransactionController extends Controller
                     $user->update(['status' => 'tidak meminjam']);
                 }
             }
+            
+            Alert::success('Update Status', 'Status telah diperbarui menjadi kembali');
+            return redirect()->route('admin.trans');
+
         } elseif ($transaction->status === 'denda') {
             $transaction->update(['status' => 'kembali']);
 
@@ -83,8 +87,8 @@ class TransactionController extends Controller
                     $user->update(['status' => 'tidak meminjam']);
                 }
             }
+            Alert::success('Update Status', 'Status telah diperbarui menjadi kembali');
+            return redirect()->route('admin.trans');
         }
     }
-
-
 }

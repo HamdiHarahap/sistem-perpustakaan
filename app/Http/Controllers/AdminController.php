@@ -51,7 +51,6 @@ class AdminController extends Controller
             ->where('tanggal_kembali', '<', $today)
             ->update(['status' => 'denda']);
 
-        
         $transaksi = Transaction::orderBy('tanggal_pinjam', 'asc')->get();
 
         return view('admin.transaksi', [
