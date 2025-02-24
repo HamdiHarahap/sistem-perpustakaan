@@ -39,15 +39,18 @@
                             @endif
                         </td>
                         <td class="p-2">
-                            <p class="rounded-lg p-2 w-fit cursor-pointer status-toggle
+                            <form action="{{route('admin.updateStatus', ['id' => $item->id])}}" method="POST">
+                                @csrf
+                                @method('PUT')
+                                <input type="hidden" name="status" value="{{$item->status}}">
+                                <button type="button" class="btn-status rounded-lg p-2 w-fit cursor-pointer status-toggle
                                 {{ $item->status === 'meminjam' ? 'bg-orange-500 text-white' : 
                                    ($item->status === 'kembali' ? 'bg-green-500 text-white' : 
-                                   ($item->status === 'denda' ? 'bg-red-500 text-white' : '')) }}"
-                                data-id="{{ $item->id }}" onclick="if(confirm('Anda akan mengubah status ke kembali?')) window.location.reload();">
-                                {{ $item->status }}
-                            </p>
-                        </td>
-                                                               
+                                   ($item->status === 'denda' ? 'bg-red-500 text-white' : '') ) }}">
+                                   {{$item->status}}
+                                </button>
+                            </form>
+                        </td>                                                          
                     </tr>
                 @endforeach
             </table>
