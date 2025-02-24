@@ -13,11 +13,6 @@ document.addEventListener("DOMContentLoaded", function () {
                 confirmButtonText: "Yes, delete it!",
             }).then((result) => {
                 if (result.isConfirmed) {
-                    Swal.fire({
-                        title: "Terhapus!",
-                        text: "Buku telah dihapus!",
-                        icon: "success",
-                    });
                     this.closest("form").submit();
                 }
             });

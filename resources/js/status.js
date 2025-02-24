@@ -1,44 +1,29 @@
 document.addEventListener("DOMContentLoaded", function () {
-    fetch("/admin/check-late-returns")
-        .then((response) => response.json())
-        .then((data) => {
-            console.log("Late returns checked:", data);
-        })
-        .catch((error) => console.error("Error checking late returns:", error));
-});
-
-document.querySelectorAll(".status-toggle").forEach((button) => {
-    button.addEventListener("click", function () {
-        const transactionId = this.dataset.id;
-
-        fetch(`/admin/update-status/${transactionId}`, {
-            method: "POST",
-            headers: {
-                "Content-Type": "application/json",
-                "X-CSRF-TOKEN": document.querySelector(
-                    'meta[name="csrf-token"]'
-                ).content,
-            },
-            body: JSON.stringify({}),
-        })
-            .then((response) => response.json())
-            .then((data) => {
-                if (data.success) {
-                    this.textContent = data.newStatus;
-                    this.classList.toggle(
-                        "bg-orange-500",
-                        data.newStatus === "meminjam"
-                    );
-                    this.classList.toggle(
-                        "bg-green-500",
-                        data.newStatus === "kembali"
-                    );
-                    this.classList.toggle(
-                        "bg-red-500",
-                        data.newStatus === "denda"
-                    );
-                }
-            })
-            .catch((error) => console.error("Error:", error));
+    const buttons = document.querySelectorAll(".btn-status");
+    buttons.forEach((button) => {
+        button.addEventListener("click", function (event) {
+            if (button.textContent.trim() === "kembali") {
+                Swal.fire({
+                    title: "Update Status",
+                    text: "Tidak dapat mengubah status",
+                    icon: "info",
+                });
+            } else {
+                event.preventDefault();
+                Swal.fire({
+                    title: "Kamu yakin ingin mengubah status?",
+                    text: "Status akan di ubah ke kembali",
+                    icon: "warning",
+                    showCancelButton: true,
+                    confirmButtonColor: "#3085d6",
+                    cancelButtonColor: "#d33",
+                    confirmButtonText: "Ya, ubah status",
+                }).then((result) => {
+                    if (result.isConfirmed) {
+                        this.closest("form").submit();
+                    }
+                });
+            }
+        });
     });
 });
