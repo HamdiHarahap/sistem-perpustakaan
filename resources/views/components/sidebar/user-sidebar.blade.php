@@ -29,9 +29,9 @@
         </ul>
     </nav>
     <div>
-        <div class="flex items-center w-full gap-2 px-12 py-3">
+        <div class="flex items-center w-full gap-2 px-12 py-3 btn-logout">
             <img src="{{asset('assets/icons/logout.svg')}}" alt="logo" class="w-6">
-            <a href="/logout" onclick="return confirm('Anda ingin logout?')">Logout</a>
+            <p>Logout</p>
         </div>
     </div>
 </header>
