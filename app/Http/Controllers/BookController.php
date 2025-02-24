@@ -44,12 +44,20 @@ class BookController extends Controller
             'tahun_terbit' => $request->input('tahun')
         ]);
 
+        Alert::success('Update Buku', 'Data buku telah diperbarui!');
         return redirect()->route('admin.books');
     }
 
     public function destroy(string $id) 
     {
-        Book::where('id', $id)->delete();
+        $book = Book::where('id', $id)->first();
+
+        if($book->status == 'dipinjam') {
+            Alert::error('Buku Dipinjam', 'Buku tidak dapat dihapus karena sedang dipinjam');
+        } else {
+            Alert::success('Hapus Buku', 'Buku telah dihapus!');
+            $book->delete();
+        }
 
         return redirect()->route('admin.books');
     }
