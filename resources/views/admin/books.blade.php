@@ -6,7 +6,7 @@
         <aside class="bg-[#FFFFFF] flex justify-between p-5 items-center rounded-lg mr-4 mt-4">
             <div class="font-semibold">
                 <h2 class="text-sm">Menu</h2>
-                <h1 class="text-2xl">Books</h1>
+                <h1 class="text-2xl">Buku</h1>
             </div>
         </aside>
         <div class="mr-4 bg-[#FFFFFF] rounded-lg p-5">
@@ -14,6 +14,13 @@
                 <h1 class="text-sm font-semibold">Daftar Buku</h1>
                 <a href="/admin/tambah" class="text-sm font-semibold text-blue-600">Tambah Buku</a>
             </div>
+            {{-- <form class="flex border-2 rounded-md w-fit pe-2 ml-auto mt-2" method="GET">
+                <p class="bg-gray-200 px-4 py-2 font-semibold text-base">Cari Buku</p>
+                <input type="text" name="keyword" class="border ps-3 py-2 rounded-md border-none outline-none" placeholder="judul...">
+                <button type="submit">
+                    <img src="{{asset('/assets/icons/search.svg')}}" class="w-6">
+                </button>
+            </form> --}}
             <table class="border mr-4 w-full mt-4">
                 <tr class="border text-left bg-blue-900 text-white">
                     <th class="p-2">No</th>

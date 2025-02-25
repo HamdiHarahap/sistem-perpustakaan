@@ -6,7 +6,7 @@
         <aside class="bg-[#FFFFFF] flex justify-between p-5 items-center rounded-lg mr-4 mt-4">
             <div class="font-semibold">
                 <h2 class="text-sm">Menu</h2>
-                <h1 class="text-2xl">Books</h1>
+                <h1 class="text-2xl">Buku</h1>
             </div>
         </aside>
         <div class="mr-4 bg-[#FFFFFF] rounded-lg p-5">
