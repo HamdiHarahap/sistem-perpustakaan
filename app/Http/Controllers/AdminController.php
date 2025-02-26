@@ -75,4 +75,23 @@ class AdminController extends Controller
             'page' => 'books'
         ]);
     }
+
+    public function reportPage()
+    {
+        $mpdf = new \Mpdf\Mpdf();
+        $data = Transaction::orderBy('tanggal_pinjam', 'asc')->get();
+
+        // Render file khusus PDF
+        $html = view('admin.report', ['data' => $data])->render();
+
+        header('Content-Type: application/pdf');
+    header('Content-Disposition: attachment; filename="Laporan_Transaksi_Perpustakaan.pdf"');
+    header('Cache-Control: private, max-age=0, must-revalidate');
+    header('Pragma: public');
+
+        $mpdf->WriteHTML($html);
+        $mpdf->Output('Laporan_Transaksi_Perpustakaan.pdf', 'I');
+
+    }
+
 }
