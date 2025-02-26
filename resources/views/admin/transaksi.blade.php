@@ -44,9 +44,9 @@
                                 @method('PUT')
                                 <input type="hidden" name="status" value="{{$item->status}}">
                                 <button type="button" class="btn-status rounded-lg p-2 w-fit cursor-pointer status-toggle
-                                {{ $item->status === 'meminjam' ? 'bg-orange-500 text-white' : 
-                                   ($item->status === 'kembali' ? 'bg-green-500 text-white' : 
-                                   ($item->status === 'denda' ? 'bg-red-500 text-white' : '') ) }}">
+                                {{ $item->status === 'meminjam' ? 'bg-orange-500 text-white hover:bg-orange-700' : 
+                                   ($item->status === 'kembali' ? 'bg-green-500 text-white hover:bg-green-700' : 
+                                   ($item->status === 'denda' ? 'bg-red-500 text-white hover:bg-red-700' : '') ) }}">
                                    {{$item->status}}
                                 </button>
                             </form>

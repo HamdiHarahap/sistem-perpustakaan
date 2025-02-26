@@ -12,7 +12,7 @@
         <div class="mr-4 bg-[#FFFFFF] rounded-lg p-5">
             <div class="flex justify-between">
                 <h1 class="text-sm font-semibold">Daftar Buku</h1>
-                <a href="/admin/tambah" class="text-sm font-semibold text-blue-600">Tambah Buku</a>
+                <a href="/admin/tambah" class="text-sm font-semibold text-blue-600 hover:text-blue-800">Tambah Buku</a>
             </div>
             <table class="border mr-4 w-full mt-4">
                 <tr class="border text-left bg-blue-900 text-white">
@@ -39,13 +39,13 @@
                         </td>
                         <td class="p-2">
                             <div class="flex gap-1">
-                                <a href="/admin/edit/{{$item->id}}" class="flex items-center justify-center bg-yellow-300 rounded-lg cursor-pointer p-1 w-fit">
+                                <a href="/admin/edit/{{$item->id}}" class="flex items-center justify-center bg-yellow-300 hover:bg-yellow-500 rounded-lg cursor-pointer p-1 w-fit">
                                     <img src="../assets/icons/edit.svg" alt="logo" class="w-6">
                                 </a>
                                 <form action="{{ route('book.delete', ['id' => $item->id]) }}" method="POST" class="delete-form">
                                     @csrf
                                     @method('delete')
-                                    <button type="button" class="delete-btn flex items-center justify-center bg-red-600 rounded-lg cursor-pointer p-1 w-fit">
+                                    <button type="button" class="delete-btn flex items-center justify-center bg-red-600 hover:bg-red-800 rounded-lg cursor-pointer p-1 w-fit">
                                         <img src="../assets/icons/trash.svg" alt="logo" class="w-6">
                                     </button>
                                 </form>

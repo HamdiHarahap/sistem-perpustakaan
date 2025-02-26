@@ -47,7 +47,7 @@
                             <input type="date" name="pinjam" id="pinjam" class="px-3 py-2 border-b-2 border-black outline-none w-[30rem]" required>
                         </li>
                     </ul>
-                    <button type="submit" name="submit" class="bg-blue-900 rounded-lg px-4 py-2 text-white">Pinjam</button>
+                    <button type="submit" name="submit" class="bg-blue-900 hover:bg-blue-950 rounded-lg px-4 py-2 text-white">Pinjam</button>
                 </form>
             @endif
         </div>
