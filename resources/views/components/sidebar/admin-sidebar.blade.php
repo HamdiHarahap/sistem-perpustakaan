@@ -35,7 +35,7 @@
         </ul>
     </nav>
     <div>
-        <div class="flex items-center w-full gap-2 px-12 py-3 btn-logout">
+        <div class="flex items-center w-full gap-2 px-12 py-3 btn-logout cursor-pointer">
             <img src="{{asset('assets/icons/logout.svg')}}" alt="logo" class="w-6">
             <p>Logout</p>
         </div>
