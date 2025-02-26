@@ -27,7 +27,7 @@
                 </a>
             </li>                
             <li class="px-10 py-3 ">
-                <a href="/admin/dashboard" class="flex gap-2">
+                <a href="/admin/report" class="flex gap-2">
                     <img src="{{asset('/assets/icons/report.svg')}}" alt="logo" class="w-6">
                     Laporan
                 </a>
