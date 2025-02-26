@@ -24,6 +24,7 @@ Route::middleware(['auth', 'role:admin'])->prefix('admin')->group(function () {
     Route::get('/transactions', [AdminController::class, 'transPage'])->name('admin.trans');
     Route::get('/tambah', [AdminController::class, 'addBookPage'])->name('admin.add');
     Route::get('/edit/{id}', [AdminController::class, 'editBookPage'])->name('admin.edit');
+    Route::get('/report', [AdminController::class, 'reportPage'])->name('admin.report');
 
     Route::put('/update-status/{id}', [TransactionController::class, 'updateStatus'])->name('admin.updateStatus');
     Route::post('/tambah', [BookController::class, 'store'])->name('book.post');
