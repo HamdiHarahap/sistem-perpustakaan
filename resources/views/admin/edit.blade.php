@@ -12,7 +12,7 @@
         <div class="mr-4 bg-[#FFFFFF] rounded-lg p-5">
             <div class="flex justify-between mb-5">
                 <h1 class="text-sm font-semibold">Edit Buku</h1>
-                <a href="/admin/books" class="text-sm font-semibold text-blue-600">Kembali</a>
+                <a href="/admin/books" class="text-sm font-semibold text-blue-600 hover:text-blue-800">Kembali</a>
             </div>
             <form action="{{route('book.put', ['id' => $data->id])}}" method="POST" class="flex flex-col gap-4 items-start" enctype="multipart/form-data">
                 @method('PUT')
@@ -42,7 +42,7 @@
                     </li>
                     
                 </ul>
-                <button type="submit" name="submit" class="bg-blue-900 rounded-lg px-4 py-2 text-white">Submit</button>
+                <button type="submit" name="submit" class="bg-blue-900 hover:bg-blue-950 rounded-lg px-4 py-2 text-white">Submit</button>
             </form>
         </div>
     </section>

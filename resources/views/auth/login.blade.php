@@ -25,10 +25,10 @@
                     <p class="text-red-600">{{$message}}</p>
                     @enderror
                 </div>
-                <button type="submit" class="bg-indigo-600 rounded-lg text-white font-semibold py-2 mt-3">Log in</button>
+                <button type="submit" class="bg-indigo-600 hover:bg-indigo-800 rounded-lg text-white font-semibold py-2 mt-3">Log in</button>
             </form>
             <span class="mt-3">
-                Don't have an account? <a href="/register" class="text-blue-600 font-semibold">Register now</a>  
+                Don't have an account? <a href="/register" class="text-blue-600 hover:text-blue-800 font-semibold">Register now</a>  
             </span> 
         </div>
     </section>  
