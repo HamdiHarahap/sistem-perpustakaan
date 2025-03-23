@@ -1,8 +1,8 @@
-    <?php
+<?php
 
-    use App\Http\Controllers\AdminController;
-    use App\Http\Controllers\AuthController;
-    use App\Http\Controllers\BookController;
+use App\Http\Controllers\AdminController;
+use App\Http\Controllers\AuthController;
+use App\Http\Controllers\BookController;
 use App\Http\Controllers\TransactionController;
 use App\Http\Controllers\UserController;
 use App\Models\Book;
@@ -11,6 +11,7 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return redirect()->route('login');
 });
+
 Route::get('/login', [AuthController::class, 'loginForm'])->name('login');
 Route::post('/login', [AuthController::class, 'login'])->name('login.post');
 Route::get('/register', [AuthController::class, 'registForm'])->name('register');
@@ -37,8 +38,10 @@ Route::middleware(['auth', 'role:user'])->prefix('user')->group(function () {
     Route::get('/books', [UserController::class, 'bookPage'])->name('user.books');
     Route::get('/transactions', [UserController::class, 'transPage'])->name('user.trans');
     Route::get('/history', [UserController::class, 'historyPage'])->name('user.history');
+    Route::get('/change-password', [UserController::class, 'changePasswordPage'])->name('user.changePage');
 
     Route::post('/transactions', [TransactionController::class, 'store'])->name('user.add');
+    Route::post('/change-password/{id}', [AuthController::class, 'changePassword'])->name('user.change');
 });
 
 

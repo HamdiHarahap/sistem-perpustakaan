@@ -68,4 +68,12 @@ class UserController extends Controller
             'data' => $history,
         ]);
     }
+
+    public function changePasswordPage()
+    {
+        return view('user.change', [
+            'user' => Auth::user(),
+            'page' => 'change'
+        ]);
+    }
 }

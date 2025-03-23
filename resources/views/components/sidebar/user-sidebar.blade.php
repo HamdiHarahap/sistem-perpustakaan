@@ -26,6 +26,12 @@
                     History
                 </a>
             </li>                             
+            <li class="px-10 py-3 {{$page == 'change' ? 'bg-[#F2F9FE] text-black rounded-s-lg' : ''}}">
+                <a href="/user/change-password" class="flex gap-2">
+                    <img src="{{ asset('/assets/icons/password' . ($page == 'change' ? '-dark' : '') . '.svg') }}" alt="logo" class="w-6">
+                    Change Password
+                </a>
+            </li>                             
         </ul>
     </nav>
     <div>

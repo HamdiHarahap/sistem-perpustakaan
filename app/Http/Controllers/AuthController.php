@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\User;
+use RealRashid\SweetAlert\Facades\Alert;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Auth;
@@ -65,5 +66,21 @@ class AuthController extends Controller
         Auth::logout();
 
         return redirect()->route('login');
+    }
+
+    public function changePassword(Request $request, string $id)
+    {
+        $request->validate([
+            'current' => 'required',
+            'password' => 'required',
+            'confirm' => 'same:password'
+        ]);
+
+        $user = User::where('id', $id);
+        $user->update(['password' => Hash::make($request->input('password'))]);
+
+        Alert::success('Update Password', 'Password berhasil diperbarui');
+
+        return redirect()->route('user.dashboard');
     }
 }
