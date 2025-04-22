@@ -31,7 +31,7 @@
                     @csrf
                     <ul class="flex flex-col gap-6 w-full">
                         <li class="flex flex-col">
-                            <label for="nama" class="mb-1">Nama Peminjaman: </label>
+                            <label for="nama" class="mb-1">Nama Peminjam: </label>
                             <input type="text" name="nama" value="{{Auth::user()->name}}" readonly id="nama" class="px-3 py-2 border-b-2 border-black outline-none w-[30rem]" required>
                         </li>
                         <li class="flex flex-col">

@@ -46,7 +46,7 @@ class TransactionController extends Controller
     {
         $transaction = Transaction::where('id', $id)->first();
 
-        if ($transaction->status === 'meminjam') {
+        if ($transaction->status === 'meminjam' || $transaction->status === 'denda') {
             $transaction->update(['status' => 'kembali']);
             $transaction->update(['tanggal_kembali' => now()->format('Y-m-d')]);
 
