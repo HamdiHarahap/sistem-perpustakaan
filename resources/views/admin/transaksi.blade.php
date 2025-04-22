@@ -12,6 +12,11 @@
         <div class="mr-4 bg-[#FFFFFF] rounded-lg p-5">
             <div class="flex justify-between">
                 <h1 class="text-sm font-semibold">Daftar Transaksi</h1>
+
+                <form>
+                    <input type="text" name="search" class="rounded-md px-3 py-2 border border-gray-400 outline-blue-500" placeholder="Cari Transaksi">
+                    <button type="submit" class="bg-blue-900 text-white px-4 py-2 rounded-md hover:bg-gray-500">Cari</button>
+                </form>
             </div>
             <table class="border mr-4 w-full mt-4">
                 <tr class="border text-left bg-blue-900 text-white">
@@ -19,7 +24,7 @@
                     <th class="p-2">Nama Peminjaman</th>
                     <th class="p-2">Judul Buku</th>
                     <th class="p-2">Tanggal Pinjam</th>
-                    <th class="p-2">Tanggal Harus Kembali</th>
+                    <th class="p-2">Tenggat Kembali</th>
                     <th class="p-2">Tanggal Kembali</th>
                     <th class="p-2">Status</th>
                 </tr>

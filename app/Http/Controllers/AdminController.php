@@ -35,29 +35,58 @@ class AdminController extends Controller
 
     public function bookPage()
     {
-        $books = Book::orderBy('id', 'asc')->get();
-
+        $books = Book::orderBy('id', 'asc');
+    
+        if (request('search')) {
+            $search = request('search');
+            $books->where(function($query) use ($search) {
+                $query->where('judul_buku', 'like', "%$search%")
+                      ->orWhere('penulis', 'like', "%$search%")
+                      ->orWhere('penerbit', 'like', "%$search%")
+                      ->orWhere('tahun_terbit', 'like', "%$search%")
+                      ->orWhere('status', 'like', "%$search%");
+            });
+        }
+    
         return view('admin.books', [
-            'data' => $books,
+            'data' => $books->get(),
             'page' => 'books'
         ]);
     }
+    
 
     public function transPage()
     {
         $today = Carbon::today();
 
         Transaction::where('status', 'meminjam')
-            ->where('tanggal_kembali', '<', $today)
+            ->where('tanggal_wajib_kembali', '<', $today)
             ->update(['status' => 'denda']);
 
-        $transaksi = Transaction::orderBy('tanggal_pinjam', 'asc')->get();
+        $transaksi = Transaction::with(['user', 'book'])->orderBy('tanggal_pinjam', 'asc');
+
+        if (request('search')) {
+            $search = request('search');
+            $transaksi->where(function($query) use ($search) {
+                $query->whereHas('user', function($q) use ($search) {
+                        $q->where('name', 'like', "%$search%");
+                    })
+                    ->orWhereHas('book', function($q) use ($search) {
+                        $q->where('judul_buku', 'like', "%$search%");
+                    })
+                    ->orWhere('tanggal_pinjam', 'like', "%$search%")
+                    ->orWhere('tanggal_wajib_kembali', 'like', "%$search%")
+                    ->orWhere('tanggal_kembali', 'like', "%$search%")
+                    ->orWhere('status', 'like', "%$search%");
+            });
+        }
 
         return view('admin.transaksi', [
-            'data' => $transaksi,
+            'data' => $transaksi->get(),
             'page' => 'transaksi'
         ]);
     }
+
 
     public function addBookPage()
     {
@@ -81,7 +110,6 @@ class AdminController extends Controller
         $mpdf = new \Mpdf\Mpdf();
         $data = Transaction::orderBy('tanggal_pinjam', 'asc')->get();
 
-        // Render file khusus PDF
         $html = view('admin.report', ['data' => $data])->render();
 
         header('Content-Type: application/pdf');

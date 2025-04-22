@@ -12,6 +12,10 @@
         <div class="mr-4 bg-[#FFFFFF] rounded-lg p-5">
             <div class="flex justify-between">
                 <h1 class="text-sm font-semibold">Daftar Buku</h1>
+                <form >
+                    <input type="text" name="search" class="rounded-md px-3 py-2 border border-gray-400 outline-blue-500" placeholder="Cari Buku">
+                    <button type="submit" class="bg-blue-900 text-white px-4 py-2 rounded-md hover:bg-gray-500">Cari</button>
+                </form>
             </div>
             <table class="border mr-4 w-full mt-4">
                 <tr class="border text-left bg-blue-900 text-white">
