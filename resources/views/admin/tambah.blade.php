@@ -31,8 +31,7 @@
                     </li>
                     <li class="flex flex-col">
                         <label for="year" class="mb-1">Tahun Terbit: </label>
-                        <select name="tahun" id="year" class="px-3 py-2 border-b-2 border-black outline-none w-[30rem]" required>
-                        </select>
+                         <input type="number" name="tahun" id="year" class="px-3 py-2 border-b-2 border-black outline-none w-[30rem]" required>
                     </li>
                 </ul>
                 <button type="submit" name="submit" class="bg-blue-900 rounded-lg px-4 py-2 text-white">Submit</button>
