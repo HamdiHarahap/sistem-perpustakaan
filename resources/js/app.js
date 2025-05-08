@@ -1,4 +1,8 @@
 import "./bootstrap";
+import "./delete";
+import "./logout";
+import "./main";
+import "./status";
 
 const selectYear = document.getElementById("year");
 const currentYear = new Date().getFullYear();
