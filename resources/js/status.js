@@ -2,7 +2,7 @@ document.addEventListener("DOMContentLoaded", function () {
     const buttons = document.querySelectorAll(".btn-status");
     buttons.forEach((button) => {
         button.addEventListener("click", function (event) {
-            if (button.textContent.trim() === "kembali") {
+            /* if (button.textContent.trim() === "kembali") {
                 Swal.fire({
                     title: "Update Status",
                     text: "Tidak dapat mengubah status",
@@ -23,7 +23,8 @@ document.addEventListener("DOMContentLoaded", function () {
                         this.closest("form").submit();
                     }
                 });
-            }
+            } */
+            alert("sds");
         });
     });
 });
