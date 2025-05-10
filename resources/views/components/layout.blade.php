@@ -7,7 +7,7 @@
     <meta name="csrf-token" content="{{ csrf_token() }}"> 
     <title>{{$title}}</title>
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-    @vite(['resources/css/app.css', 'resources/js/app.js', 'resources/js/main.js', 'resources/js/status.js', 'resources/js/delete.js', 'resources/js/logout.js'])
+    @vite(['resources/css/app.css', 'resources/js/app.js'])
 </head>
 <body>
     @unless(request()->is('login') || request()->is('register'))
